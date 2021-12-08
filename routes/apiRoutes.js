@@ -12,6 +12,9 @@ router.get("/notes", (req, res) => {
 });
 
 // route to post a new note
+router.post("/notes", (req, res) => {
+    store.addNote()
+})
 
 // route to get a specific note
 

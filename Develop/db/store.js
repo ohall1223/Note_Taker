@@ -23,7 +23,8 @@ class Store {
     }
 
     // create method
-    write() {
+    addNote() {
+        // add note to db.json
         return writeFileAsync("db/db.json", "utf8");
     }
 
