@@ -5,6 +5,7 @@ const path = require("path");
 const db = require("./db/db.json");
 const { request } = require("http");
 const htmlRoutes = require("../routes/htmlRoutes")
+const apiRoutes = require("../routes/apiRoutes")
 
 // express app
 const app = express();
@@ -18,6 +19,10 @@ app.use(express.static("public"));
 // middleware 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
+app.use("/api", apiRoutes)
+app.use("/", htmlRoutes)
 
 
 app.get("/", (req, res) => {
