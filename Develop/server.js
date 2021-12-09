@@ -1,17 +1,11 @@
 // dependencies 
 const express = require("express");
-// const fs = require("fs");
-// const path = require("path");
-// const db = require("./db/db.json");
-// const { request } = require("http");
-const htmlRoutes = require("../routes/htmlRoutes")
-const apiRoutes = require("../routes/apiRoutes")
+const htmlRoutes = require("../routes/htmlRoutes");
+const apiRoutes = require("../routes/apiRoutes");
 
 // express app
 const app = express();
 const PORT = 3001;
-
-let notes = []
 
 // link assets
 app.use(express.urlencoded({ extended: true }));

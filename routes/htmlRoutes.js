@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 }) 
 
 router.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "../Develop/pubic/index.html"));
+    res.sendFile(path.join(__dirname, "../Develop/public/index.html"));
 })
 
 // index

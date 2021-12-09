@@ -1,7 +1,7 @@
 // build a class for store with methods that read json file, write, get, add and remove notes
 const util = require("util");
 const fs = require("fs")
-const { v4: uuidv4 } = require('uuid'); // Newest update
+// const { v4: uuidv4 } = require('uuid'); 
 
 const readFileAsync = util.promisify(fs.readFile)
 const writeFileAsync = util.promisify(fs.writeFile)
@@ -9,7 +9,9 @@ const writeFileAsync = util.promisify(fs.writeFile)
 // now I can use promise objects instead of callbacks
 // es6 syntax
 
-// get & post are required 
+// get & post are required
+
+var currentID = 1;
 
 class Store {
     // read method 
@@ -40,7 +42,7 @@ class Store {
         if(!title || !text) {
             console.log("Please fill in title & text");
         }
-        const newNote = {title, text, id: uuidv4()};
+        const newNote = {title, text, id: currentID};
 
         return this.getNotes()
         .then(notes => [... notes, newNote])
@@ -49,8 +51,11 @@ class Store {
     }
 
     // delete method
-
-    // update mehtod
+    deleteNote(id) {
+        return this.getNotes()
+            .then(notes=> notes.filter(note => note.id !== id))
+            .then(filteredNotes => this.write(filteredNotes))
+    }
 }
 
 // export a newly created object with methods on the prototype
