@@ -6,20 +6,23 @@ const store = require("../Develop/db/store")
 // route handlers
 // route to get all notes
 router.get("/notes", (req, res) => {
-    store.getNotes().then((notes) => {
-        return res.json(notes);
-    });
+    store.getNotes()
+    .then((notes) => 
+        res.json(notes)
+    )
+    .catch(err => res.status(500).json(err))
 });
 
 // route to post a new note
 router.post("/notes", (req, res) => {
-    store.addNote()
+    store.addNote(req.body)
+    // data will be stored that came from the front end on req.body
+    .then((note) => 
+        res.json(note)
+    )
+    .catch(err => res.status(500).json(err))
 })
 
-// route to get a specific note
-
 // route to delete a specific note
-
-// route to updata a note
 
 module.exports = router;
