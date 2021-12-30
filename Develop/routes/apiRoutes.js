@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const { request } = require("http");
-const store = require("../Develop/db/store")
+const store = require("../db/store")
 
 
 // route handlers
